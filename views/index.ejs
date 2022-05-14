@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+  <title>Curriculum</title>
+  <style>
+    #principal {
+      border: solid 1px silver;
+      margin: 0 auto;
+      padding: 5px;
+      width: 80px;
+      background: silver;
+    }
+
+    body{
+      background-size: 100px;
+      background-attachment: fixed;
+      background-image: url
+      background-size: cover;
+      background-repeat:no-repeat;
+      background-position: center center;
+    }
+   
+    fieldset{
+      margin-bottom: 10px;
+      background-color: #CFECF3;
+    }
+
+    legend{
+      border-radius: 20px;
+      padding: 5px;
+      font-weight: bold;
+      background: #4DADF3;
+    }
+
+    div{
+      background-color: white;
+      border: solid black;
+      padding: 13px;
+      width: 60%;
+      margin: 0 auto;
+      font-family: Arial;
+      background-image: url(fondo.jpg);
+      background-size: cover;
+      background-repeat:no-repeat;
+      background-position: center center;
+    }
+
+    .header{
+       display:flex;
+    }
+
+    img{
+      width: 200px;
+      height: 200px;
+    }
+
+    .nombre{
+      margin-left: 40px;
+      width: 100%;
+      background-color:#A0DEFF;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div>
+    
+      <div class="header">
+        <img src="/stylesheets/foto.jpg" class="img" />
+         <div class="nombre">
+
+            <h2> Paola E. Uriarte V.</h2>
+            <p>Edo. Aragua /// Nacionalidad: Venezolano /// Sexo:Femenino </p>
+            <p>Edad: 21 años ///</p>
+            <p>Estudiante de informatica</p>
+          </div>  
+      </div>
+
+      <br>
+      <br>
+      <br>
+      <br>
+     
+      <fieldset>
+        <legend>Datos Personales</legend>
+      <ul>
+        <li>F. de nacimiento: 07/04/2001</li>
+        <li>C.I: 27.863.986</li>
+        <li>Telefono: 0412-1470333</li>
+        <li>Correo: u.paolav@gmail.com</li>
+        <li>Direccion: Edo. Aragua- Villa de cura</li>
+      </ul>
+      </fieldset>
+
+      <fieldset>
+        <legend>Formacion Academica</legend>
+      <ul>
+        <li>Estudios Primarios: Preescolar Josefina Rojas</li>
+        <li>Estudios Secundarios: U.E.P.C Padre Jimenez</li>
+        <li>Estudios Universitarios: UNERG</li>
+      </ul>
+      </fieldset>
+
+      <fieldset>
+        <legend>Experiencia laboral</legend>
+      <ul>
+        <li>Asistente de bibliotecario</li>
+      </ul>
+      </fieldset>
+       
+       <fieldset>
+        <legend>Habilidades</legend>
+      <ul>
+        <li>Creatividad</li>
+        <li>Trabajar bien bajo presion</li>
+        <li>Capacidad de trabajar en equipo</li>
+        <li>Capacidad de Adaptacion</li>
+        <li>Responsabilidad</li>
+      </ul>
+      </fieldset>
+
+      <fieldset>
+       <legend>Redes Sociales</legend>
+      
+        <p>Instagram:</p> <a href=" https://www.instagram.com/pao7uv/">pao7uv</a>
+        <p>Facebook:</p> <a href="https://www.facebook.com/profile.php?id=100066973620669">Pao</a>
+      </fieldset>
+
+      <fieldset>
+       <form action="/" method= "post"> 
+        
+  <fieldset>
+        
+      <legend>Para contactar:</legend>
+      
+   
+      <label for="Nombre"> Nombres:</label>
+      <input value='<% obtener.nombre%>' type="text" id="name" name="nombre" value="" placeholder="Ingrese su nombre" required="true">
+  
+
+      <label for="email" style="color: black;"> email:</label>
+      <input value='<% obtener.email%>' type="email" id="email" name="email" placeholder="Ingrese su email" required="true">
+
+      
+      
+      <label for="Comentario"> Comentario:</label>
+     <textarea  style="resize: none; type="textarea" required="true"  name="comentario" placeholder="Ingrese su comentario"></textarea> <% obtener.comentario%>
+
+      <input type="submit" value="Enviar">
+    
+
+  
+
+      </fieldset>
+</form>
+ </div>
+
+</body>
+ 
+</html>
