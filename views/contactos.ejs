@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+		<title>Contactos</title>
+	
+</head>
+<body bgcolor="white">
+<h1 align="center" style="color: black;"> <b>Contactos</b></h1>
+
+<table align="center">
+	
+	<thead>
+
+	    <tr>
+	
+				<th scope="col"><span style="
+				background-color:  #4baec2;
+				border-radius: 5px;
+				padding: 5px 10px;">Nombre </th>
+
+				<th scope="col"><span style="
+				background-color:  #4baec2;
+				border-radius: 5px;
+				padding: 5px 10px;">Email</th>
+
+				<th scope="col"><span style="
+				background-color:  #4baec2;
+				border-radius: 5px;
+				padding: 5px 10px;">Comentario </th>
+
+				<th scope="col"><span style="
+				background-color:  #4baec2;
+				border-radius: 5px;
+				padding: 5px 10px;">Fecha y Hora</th>
+
+				<th scope="col"><span style="
+				background-color:  #4baec2;
+				border-radius: 5px;
+				padding: 5px 10px;">IP </th>
+
+				<th scope="col"><span style="
+					background-color:  #4baec2;
+					border-radius: 5px;
+					padding: 5px 10px;">Pais </th>
+		</tr>
+
+	</thead>
+	<tbody>
+			<% for (const tarea of obtener) { %>
+		<tr>
+			<td><%= tarea.nombre%></td>
+			<td><%= tarea.email%></td>
+			<td><%= tarea.comentario%></td>
+			<td><%= tarea.fecha%></td>
+			<td><%= tarea.hora%></td>
+			<td><%= tarea.ip%></td>
+			<td><%= tarea.country_cli%></td>
+		</tr>
+	  <%  } %>
+    </tbody>
+
+</table>
+</body>
+</html>
