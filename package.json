@@ -11,10 +11,14 @@
     "dotenv": "^16.0.1",
     "ejs": "~2.6.1",
     "express": "~4.16.1",
+    "express-session": "^1.17.3",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
     "node-fetch": "^2.6.7",
     "nodemailer": "^6.7.5",
+    "passport": "^0.6.0",
+    "passport-google-oauth": "^2.0.0",
+    "session": "^0.1.0",
     "sqlite3": "^5.0.8"
   }
 }

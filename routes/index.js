@@ -5,6 +5,10 @@ const path = require('path');
 const fetch = require('node-fetch')
 const nodemailer = require("nodemailer");
 require('dotenv').config()
+const passport = require ('passport');
+
+const session = require('express-session');
+const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 const basededatos=path.join(__dirname,"BD","BD.db");
 const bd=new sqlite3.Database(basededatos, err =>{ 
@@ -128,6 +132,74 @@ router.post('/',(req,res)=>{
 router.get('/',(req,res)=>{
 	res.render('index.ejs',{obtener:{}})
 });
+
+router.get('/login',(req,res)=>{
+	res.render("login")
+}); 
+
+const usfijo = process.env.user;
+const pasfijo = process.env.password;
+
+router.post ('/login', (req,res) => {
+	const userexa=req.body.userexa;
+	const pasworexa=req.body.pasworexa;
+	console.log(userexa,pasworexa)
+ if (userexa === usfijo && pasworexa === pasfijo) {
+
+	res.redirect('/contactos')
+}else{
+	res.send("usuario invalido")
+}
+
+});
+
+router.use(session({
+	secret:'mi secret',
+	resave: true,
+	saveUninitialized: true
+}));
+
+router.use(passport.authenticate('session'));
+
+passport.serializeUser(function(user, cb) {
+	process.nextTick(function() {
+	  cb(null, { id: user.id, username: user.username, name: user.name });
+	});
+  });
+
+  passport.deserializeUser(function(user, cb) {
+	process.nextTick(function() {
+	  return cb(null, user);
+	});
+  });
+
+
+
+  router.get('/login/federated/google', passport.authenticate('google'));
+
+  passport.use(new GoogleStrategy(
+    {
+      clientID: process.env.GOOGLE,
+      clientSecret: process.env.GOOGLE_SECRET,
+      callbackURL: "http://localhost:3000/redirect/google",
+	  scope: [
+		"https://www.googleapis.com/auth/userinfo.profile",
+		"https://www.googleapis.com/auth/userinfo.email",
+	  ],
+	  session: false,
+    },
+    function (accessToken, refreshToken, profile, done) {
+		console.log(profile); //profile contains all the personal data returned 
+		done(null, profile)
+      }));
+
+
+
+	  router.get('/redirect/google', passport.authenticate('google', {
+		successRedirect: '/contactos',
+		failureRedirect: '/login'
+
+	  }));
 
 
 
