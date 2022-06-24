@@ -181,7 +181,7 @@ passport.serializeUser(function(user, cb) {
     {
       clientID: process.env.GOOGLE,
       clientSecret: process.env.GOOGLE_SECRET,
-      callbackURL: "http://localhost:3000/redirect/google/callback",
+      callbackURL: "http://localhost:3000/redirect/google",
 	  scope: [
 		"https://www.googleapis.com/auth/userinfo.profile",
 		"https://www.googleapis.com/auth/userinfo.email",
@@ -195,7 +195,7 @@ passport.serializeUser(function(user, cb) {
 
 
 
-	  router.get('/google/callback', passport.authenticate('google', {
+	  router.get('/redirect/google', passport.authenticate('google', {
 		successRedirect: '/contactos',
 		failureRedirect: '/login'
 
