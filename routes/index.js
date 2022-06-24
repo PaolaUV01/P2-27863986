@@ -40,6 +40,74 @@ router.get('/contactos',(req,res)=>{
 	})
 })
 
+router.get('/login',(req,res)=>{
+	res.render("login")
+}); 
+
+const usfi = process.env.user;
+const pasfi = process.env.password;
+
+router.post ('/login', (req,res) => {
+	const userexa=req.body.userexa;
+	const pasworexa=req.body.pasworexa;
+	console.log(userexa,pasworexa)
+ if (userexa === usfijo && pasworexa === pasfijo) {
+
+	res.redirect('/contactos')
+}else{
+	res.send("usuario invalido")
+}
+
+});
+
+router.use(session({
+	secret:'mi secret',
+	resave: true,
+	saveUninitialized: true
+}));
+
+router.use(passport.authenticate('session'));
+
+passport.serializeUser(function(user, cb) {
+	process.nextTick(function() {
+	  cb(null, { id: user.id, username: user.username, name: user.name });
+	});
+  });
+
+  passport.deserializeUser(function(user, cb) {
+	process.nextTick(function() {
+	  return cb(null, user);
+	});
+  });
+
+
+
+  router.get('/login/federated/google', passport.authenticate('google'));
+
+  passport.use(new GoogleStrategy(
+    {
+      clientID: process.env.GOOGLE,
+      clientSecret: process.env.GOOGLE_SECRET,
+      callbackURL: "http://Node0101p.herokuapp.com/google/callback",
+	  scope: [
+		"https://www.googleapis.com/auth/userinfo.profile",
+		"https://www.googleapis.com/auth/userinfo.email",
+	  ],
+	  session: false,
+    },
+    function (accessToken, refreshToken, profile, done) {
+		console.log(profile); //profile contains all the personal data returned 
+		done(null, profile)
+      }));
+
+
+
+	  router.get('/google/callback', passport.authenticate('google', {
+		successRedirect: '/contactos',
+		failureRedirect: '/login'
+
+	  }));
+
 router.post('/',(req,res)=>{
 	var diadehoy = new Date();
   	var horas = diadehoy.getHours();
