@@ -88,7 +88,7 @@ passport.serializeUser(function(user, cb) {
     {
 		GOOGLE_CLIEN: "224397771850-tup07mhco9pos9kb0ievfbpe4p0coebe.apps.googleusercontent.com",
 		GOOGLE_SECRET: "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",
-      callbackURL: "http://Node0101p.herokuapp.com/google/callback",
+      callbackURL: "http://node0101p.herokuapp.com/google/callback",
 	  scope: [
 		"https://www.googleapis.com/auth/userinfo.profile",
 		"https://www.googleapis.com/auth/userinfo.email",
