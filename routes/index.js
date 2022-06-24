@@ -4,12 +4,10 @@ const sqlite3=require('sqlite3').verbose();
 const path = require('path');
 const fetch = require('node-fetch')
 const nodemailer = require("nodemailer");
-require('dotenv').config()
 const passport = require ('passport');
-
 const session = require('express-session');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-
+require('dotenv').config()
 const basededatos=path.join(__dirname,"BD","BD.db");
 const bd=new sqlite3.Database(basededatos, err =>{ 
 if (err){
@@ -191,13 +189,7 @@ router.post('/',(req,res)=>{
     })
 })
   	
-		
-
-
-
-
-
-router.get('/',(req,res)=>{
+	router.get('/',(req,res)=>{
 	res.render('index.ejs',{obtener:{}})
 });
 
