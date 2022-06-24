@@ -86,7 +86,7 @@ passport.serializeUser(function(user, cb) {
 
   passport.use(new GoogleStrategy(
     {
-      clientID: process.env.GOOGLE,
+      clientID: process.env.GOOGLE_CLIEN,
       clientSecret: process.env.GOOGLE_SECRET,
       callbackURL: "http://Node0101p.herokuapp.com/google/callback",
 	  scope: [
