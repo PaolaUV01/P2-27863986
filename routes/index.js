@@ -86,8 +86,8 @@ passport.serializeUser(function(user, cb) {
 
   passport.use(new GoogleStrategy(
     {
-		GOOGLE_CLIEN: "224397771850-tup07mhco9pos9kb0ievfbpe4p0coebe.apps.googleusercontent.com",
-		GOOGLE_SECRET: "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",
+	  GOOGLE_CLIEN: "224397771850-tup07mhco9pos9kb0ievfbpe4p0coebe.apps.googleusercontent.com",
+	  GOOGLE_SECRET: "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",
       callbackURL: "http://node0101p.herokuapp.com/google/callback",
 	  scope: [
 		"https://www.googleapis.com/auth/userinfo.profile",
@@ -201,73 +201,7 @@ router.get('/',(req,res)=>{
 	res.render('index.ejs',{obtener:{}})
 });
 
-router.get('/login',(req,res)=>{
-	res.render("login")
-}); 
 
-const usfijo = process.env.user;
-const pasfijo = process.env.password;
-
-router.post ('/login', (req,res) => {
-	const userexa=req.body.userexa;
-	const pasworexa=req.body.pasworexa;
-	console.log(userexa,pasworexa)
- if (userexa === usfijo && pasworexa === pasfijo) {
-
-	res.redirect('/contactos')
-}else{
-	res.send("usuario invalido")
-}
-
-});
-
-router.use(session({
-	secret:'mi secret',
-	resave: true,
-	saveUninitialized: true
-}));
-
-router.use(passport.authenticate('session'));
-
-passport.serializeUser(function(user, cb) {
-	process.nextTick(function() {
-	  cb(null, { id: user.id, username: user.username, name: user.name });
-	});
-  });
-
-  passport.deserializeUser(function(user, cb) {
-	process.nextTick(function() {
-	  return cb(null, user);
-	});
-  });
-
-
-
-  router.get('/login/federated/google', passport.authenticate('google'));
-
-  passport.use(new GoogleStrategy(
-    {
-      clientID: process.env.GOOGLE,
-      clientSecret: process.env.GOOGLE_SECRET,
-      callbackURL: "http://Node0101p.herokuapp.com/google/callback",
-	  scope: [
-		"https://www.googleapis.com/auth/userinfo.profile",
-		"https://www.googleapis.com/auth/userinfo.email",
-	  ],
-	  session: false,
-    },
-    function (accessToken, refreshToken, profile, done) {
-		console.log(profile); //profile contains all the personal data returned 
-		done(null, profile)
-      }));
-
-
-
-	  router.get('/google/callback', passport.authenticate('google', {
-		successRedirect: '/contactos',
-		failureRedirect: '/login'
-
-	  }));
 
 
 
