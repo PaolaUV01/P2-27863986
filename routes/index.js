@@ -51,7 +51,7 @@ router.post ('/login', (req,res) => {
     const userexa=req.body.userexa;
     const pasworexa=req.body.pasworexa;
     console.log(userexa,pasworexa)
- if (userexa === usfijo && pasworexa === pasfijo) {
+ if (userexa === usfi && pasworexa === pasfi) {
 
     res.redirect('/contactos')
 }else{
