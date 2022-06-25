@@ -44,8 +44,8 @@ router.get('/login',(req,res)=>{
     res.render("login")
 }); 
 
-const usfi = process.env.user;
-const pasfi = process.env.password;
+const usfi = process.env.USER;
+const pasfi = process.env.PASSWORD;
 
 router.post ('/login', (req,res) => {
     const userexa=req.body.userexa;
